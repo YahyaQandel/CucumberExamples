@@ -24,8 +24,8 @@ public class VidscolaStepDefinitions {
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
-        this.driver = new ChromeDriver(chromeOptions);
+//      ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
+        this.driver = new ChromeDriver();
     }
 
     @Given("I visit {string}")
@@ -35,7 +35,7 @@ public class VidscolaStepDefinitions {
 
     @When("I select the search icon")
     public void iSelectTheSearchIcon() {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, 50);
         WebElement searchIcon = wait.until(
                 ExpectedConditions.visibilityOfElementLocated(By.className("navbar-search__toggle"))
         );

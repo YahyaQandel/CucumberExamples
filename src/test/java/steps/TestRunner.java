@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/java/features/",
+        tags = "not @flakyTest",
         plugin = {"pretty", "html:target/features-reports/reports.html","json:target/features-reports/reports.json"},
         glue = "steps"
 )
