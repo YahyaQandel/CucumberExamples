@@ -1,7 +1,7 @@
 Feature: Google translate
   @flakyTest
   Scenario Outline: Translate from English to arabic
-    Given I go to "https://vidscola.com/"
+    Given I go to "https://translate.google.com/"
     When I select auto detect language
     And choose to translate into Arabic
     And Type "<text>"
