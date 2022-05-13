@@ -24,8 +24,8 @@ public class VidscolaStepDefinitions {
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
-//      ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
-        this.driver = new ChromeDriver();
+      ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
+        this.driver = new ChromeDriver(chromeOptions);
     }
 
     @Given("I visit {string}")

@@ -25,10 +25,6 @@ public class GoogleStepDefinitions {
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--incognito");
-//        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-//        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
         this.driver = new ChromeDriver(chromeOptions);
     }
