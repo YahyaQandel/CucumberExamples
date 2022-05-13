@@ -1,5 +1,4 @@
 Feature: Google translate
-  @flakyTest
   Scenario Outline: Translate from English to arabic
     Given I go to "https://translate.google.com/"
     When I select auto detect language
