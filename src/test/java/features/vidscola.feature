@@ -1,3 +1,4 @@
+@flakyTest
 Feature: Vidscola website
   Scenario: check if vidscola.com has this course
     Given I visit "https://vidscola.com/"
