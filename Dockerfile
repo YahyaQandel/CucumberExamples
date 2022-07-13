@@ -1,4 +1,4 @@
-From amitaarya17/docker-maven-chrome
+From yahyaqandel/mvn11-chrome
 COPY . /app
 WORKDIR /app
 EXPOSE 9515
