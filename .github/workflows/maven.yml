@@ -30,3 +30,4 @@ jobs:
       if: always() # always run even if the previous step fails
       with:
         report_paths: 'target/features-reports/reports.xml'
+        check_name: 'feature tests results'
