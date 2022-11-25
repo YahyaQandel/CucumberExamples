@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class Base {
     WebDriver driver;
     private final WebDriverWait wait;
@@ -20,5 +22,8 @@ public class Base {
     }
     protected void performWaitForElement(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    protected void performWaitForElement(List<WebElement> elements){
+        wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 }

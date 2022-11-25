@@ -22,7 +22,7 @@ public class MyStoreDefinitions {
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
+        ChromeOptions chromeOptions = new ChromeOptions();
         this.driver = new ChromeDriver(chromeOptions);
     }
     @When("I visit mystore website")
@@ -35,14 +35,14 @@ public class MyStoreDefinitions {
         myStoreHomePage.searchFor(textToSearchBy);
     }
 
-    @Then("I should find {int} results found")
+    @Then("I should find {int} items found")
     public void iShouldFindResultsFound(int searchResultsCount) {
         Assert.assertTrue(myStoreHomePage.getSearchResultsText().contains(String.valueOf(searchResultsCount)));
     }
 
-    @And("I should find {string} in page heading as search keyword")
-    public void iShouldFindInPageHeading(String textUsedInSearch) {
-        Assert.assertEquals(textUsedInSearch,myStoreHomePage.getSearchResultsPageHeadingText());
+    @And("I should find {string} in results items")
+    public void iShouldFindInPageHeading(String itemTitle) {
+        Assert.assertTrue(myStoreHomePage.isItemExistsInSearchResults(itemTitle));
     }
     @After
     public void teardown(){

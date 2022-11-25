@@ -1,23 +1,27 @@
 package pages.mystore;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.Base;
 
+import java.util.List;
+
 public class Home extends Base {
 
-    @FindBy(id="search_query_top")
+//  @FindBy(name="keyword")
+    @FindBy(css="form input")
     WebElement searchField;
-    @FindBy(name="submit_search")
+    @FindBy(css="form button")
     WebElement searchIconField;
-    @FindBy(className="heading-counter")
+    @FindBy(css="main header span")
     WebElement searchResultsText;
-    @FindBy(className="lighter")
-    WebElement searchResultsPageHeading;
+    @FindBy(css="main figcaption")
+    List<WebElement> searchResultsList;
     public Home(WebDriver driver){
         super(driver);
-        URL = "http://automationpractice.com/index.php";
+        URL = "https://djangogreatkart.com/store";
         initElements(this);
     }
 
@@ -31,8 +35,17 @@ public class Home extends Base {
         performWaitForElement(searchResultsText);
         return searchResultsText.getText();
     }
-    public String getSearchResultsPageHeadingText(){
-        performWaitForElement(searchResultsPageHeading);
-        return searchResultsPageHeading.getText();
+    public boolean isItemExistsInSearchResults(String itemTitle){
+        performWaitForElement(searchResultsList);
+        System.out.printf("Found Items : %d%n",searchResultsList.size());
+        System.out.println("-----------");
+        for (WebElement resultItem : searchResultsList){
+            String foundItemTitle = resultItem.findElement(By.tagName("a")).getText();
+            System.out.println(foundItemTitle);
+            if (foundItemTitle.equals(itemTitle)){
+                return true;
+            }
+        }
+        return false;
     }
 }
