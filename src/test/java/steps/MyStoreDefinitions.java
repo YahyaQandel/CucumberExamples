@@ -35,7 +35,7 @@ public class MyStoreDefinitions {
         myStoreHomePage.searchFor(textToSearchBy);
     }
 
-    @Then("I should find {int} items found")
+    @Then("I should find {int} items")
     public void iShouldFindResultsFound(int searchResultsCount) {
         Assert.assertTrue(myStoreHomePage.getSearchResultsText().contains(String.valueOf(searchResultsCount)));
     }
