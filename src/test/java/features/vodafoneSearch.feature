@@ -7,6 +7,6 @@ Feature: vodafone website
 
     Examples:
       | search_text       | search_result       |
-      | internet          | electronics  |
+      | internet          | Machine To Machine  |
       | account           | Manage Your Account |
 
