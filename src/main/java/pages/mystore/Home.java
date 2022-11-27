@@ -26,17 +26,17 @@ public class Home extends Base {
     }
 
     public void searchFor(String textToSearchBy){
-        performWaitForElement(searchField);
+        performWait(searchField);
         searchField.sendKeys(textToSearchBy);
-        performWaitForElement(searchIconField);
+        performWait(searchIconField);
         searchIconField.click();
     }
     public String getSearchResultsText(){
-        performWaitForElement(searchResultsText);
+        performWait(searchResultsText);
         return searchResultsText.getText();
     }
     public boolean isItemExistsInSearchResults(String itemTitle){
-        performWaitForElement(searchResultsList);
+        performWait(searchResultsList);
         System.out.printf("Found Items : %d%n",searchResultsList.size());
         System.out.println("-----------");
         for (WebElement resultItem : searchResultsList){

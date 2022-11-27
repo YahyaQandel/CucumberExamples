@@ -20,10 +20,10 @@ public class Base {
         PageFactory.initElements(driver, child);
         this.driver.get(URL);
     }
-    protected void performWaitForElement(WebElement element){
+    protected void performWait(WebElement element){
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-    protected void performWaitForElement(List<WebElement> elements){
+    protected void performWait(List<WebElement> elements){
         wait.until(ExpectedConditions.visibilityOfAllElements(elements));
     }
 }
