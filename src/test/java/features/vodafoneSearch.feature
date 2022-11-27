@@ -1,5 +1,5 @@
-Feature: vodafone website
-  Scenario Outline: check if vodafone.com.eg search has specific information
+Feature: vodafone.com.eg search
+  Scenario Outline: validate if vodafone.com.eg required search results appears in first row based on search keywords
     Given I go to vodafone website
     When I click on the search icon
     And I type in search field "<search_text>"
