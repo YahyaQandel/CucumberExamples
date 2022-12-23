@@ -37,6 +37,7 @@ public class MyStoreDefinitions {
 
     @Then("I should find {int} items")
     public void iShouldFindResultsFound(int searchResultsCount) {
+        // TODO: should change responsibility of checking contains to equal inside `getSearchResultsText`
         Assert.assertTrue(myStoreHomePage.getSearchResultsText().contains(String.valueOf(searchResultsCount)));
     }
 
