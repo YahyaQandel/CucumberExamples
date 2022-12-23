@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class VodafoneStepDefinitions {
 
@@ -67,7 +68,9 @@ public class VodafoneStepDefinitions {
                 ExpectedConditions.visibilityOfElementLocated(selector));
     }
     void closeAllowCookieAlertBoxIfExists(){
-        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        // wait till the box slide up motion to be done, because element location changes
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         WebElement allowCookieAlertBoxRejectBtn = wait.until(
                 ExpectedConditions.elementToBeClickable(By.id("onetrust-reject-all-handler")));
         allowCookieAlertBoxRejectBtn.click();
