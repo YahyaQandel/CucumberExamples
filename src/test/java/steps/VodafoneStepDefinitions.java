@@ -8,10 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -67,10 +64,18 @@ public class VodafoneStepDefinitions {
                 ExpectedConditions.visibilityOfElementLocated(selector));
     }
     void closeAllowCookieAlertBoxIfExists(){
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement allowCookieAlertBoxRejectBtn = wait.until(
-                ExpectedConditions.elementToBeClickable(By.id("onetrust-reject-all-handler")));
-        allowCookieAlertBoxRejectBtn.click();
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        String allowCookieBoxRejectBtnId = "onetrust-reject-all-handler";
+        Point rejectBtnAtStartupLocation = wait.until(
+                ExpectedConditions.elementToBeClickable(By.id(allowCookieBoxRejectBtnId))).getLocation();
+        Point rejectBtnCurrentLocation = new Point(rejectBtnAtStartupLocation.x+1, rejectBtnAtStartupLocation.y+1);
+        while (rejectBtnAtStartupLocation.x != rejectBtnCurrentLocation.x || rejectBtnAtStartupLocation.y != rejectBtnCurrentLocation.y){
+            rejectBtnAtStartupLocation = rejectBtnCurrentLocation;
+            rejectBtnCurrentLocation = wait.until(
+                    ExpectedConditions.elementToBeClickable(By.id(allowCookieBoxRejectBtnId))).getLocation();
+        }
+        wait.until(
+                ExpectedConditions.elementToBeClickable(By.id(allowCookieBoxRejectBtnId))).click();
     }
     @After
     public void teardown(){
