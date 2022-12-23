@@ -67,10 +67,10 @@ public class VodafoneStepDefinitions {
                 ExpectedConditions.visibilityOfElementLocated(selector));
     }
     void closeAllowCookieAlertBoxIfExists(){
-        List<WebElement> allowCookieAlertBoxCloseIconList = driver.findElements(By.id("onetrust-close-btn-container"));
-        if (allowCookieAlertBoxCloseIconList.size() > 0 && allowCookieAlertBoxCloseIconList.get(0).isDisplayed()){
-            allowCookieAlertBoxCloseIconList.get(0).findElement(By.tagName("button")).click();
-        }
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement allowCookieAlertBoxRejectBtn = wait.until(
+                ExpectedConditions.elementToBeClickable(By.id("onetrust-reject-all-handler")));
+        allowCookieAlertBoxRejectBtn.click();
     }
     @After
     public void teardown(){
