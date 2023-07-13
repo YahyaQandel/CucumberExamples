@@ -24,10 +24,11 @@ public class MyStoreDefinitions {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
         this.driver = new ChromeDriver(chromeOptions);
+        myStoreHomePage = new Home(this.driver);
     }
     @When("I visit mystore website")
     public void iVisitMyStoreWebsite() {
-        myStoreHomePage = new Home(this.driver);
+        myStoreHomePage.visit();
     }
 
     @When("I type {string} in search field and press search icon")

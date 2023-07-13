@@ -18,6 +18,9 @@ public class Base {
     }
     protected void initElements(Object child){
         PageFactory.initElements(driver, child);
+    }
+
+    public void visit(){
         this.driver.get(URL);
     }
     protected void performWait(WebElement element){
