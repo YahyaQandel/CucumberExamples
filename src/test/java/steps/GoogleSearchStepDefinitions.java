@@ -26,7 +26,7 @@ public class GoogleSearchStepDefinitions {
     @Before
     public void setup() {
         WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
+        ChromeOptions chromeOptions = new ChromeOptions().setHeadless(true);
         this.driver = new ChromeDriver(chromeOptions);
     }
 
